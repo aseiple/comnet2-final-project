@@ -30,6 +30,8 @@ class udprouter:
             pkt_type = packet[1]
             if pkt_type == 1:
                 seq, ttl, src = read_hello(packet)
+                print(src)
+                self.handle_sending(packet, (addr[0], 8881))
                 # Update routing table with new destination and forward HELLO packet
                 # to neighbors
             elif pkt_type == 2:
@@ -66,7 +68,9 @@ class udprouter:
                 print('Unknown packet type')
 
 
+routetable = {"S": ['192.168.1.0']}
+
 if __name__ == '__main__':
     print('router started')
-    udp_router = udprouter(id=201, port=8881)
+    udp_router = udprouter(id=201, port=8881, rt=routetable)
     udp_router.handle_packets()

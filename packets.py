@@ -7,7 +7,7 @@ import struct
 # TTL (1 BYTE)
 # SRC (1 BYTE)
 def create_hello(seq, ttl, src):
-    header = struct.pack('BBBB', '1', seq, ttl, src)
+    header = struct.pack('BBBB', 1, seq, ttl, src)
     return header
 
 
