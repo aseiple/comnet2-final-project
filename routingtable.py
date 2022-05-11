@@ -12,6 +12,7 @@ hosts = {
 
 routes = {
     'r1': {
+        'r1': {'path': 'r1', 'cost': 0},
         'r2': {'path': 'r2', 'cost': 1},
         'r3': {'path': 'r3', 'cost': 1},
         'r4': {'path': 'r3', 'cost': 2},
@@ -23,6 +24,7 @@ routes = {
     },
     'r2': {
         'r1': {'path': 'r1', 'cost': 1},
+        'r2': {'path': 'r2', 'cost': 0},
         'r3': {'path': 'r1', 'cost': 2},
         'r4': {'path': 'r1', 'cost': 3},
         'r5': {'path': 'r1', 'cost': 3},
@@ -34,17 +36,19 @@ routes = {
     'r3': {
         'r1': {'path': 'r1', 'cost': 1},
         'r2': {'path': 'r1', 'cost': 2},
+        'r3': {'path': 'r3', 'cost': 0},
         'r4': {'path': 'r4', 'cost': 1},
         'r5': {'path': 'r5', 'cost': 1},
         's': {'path': 'r1', 'cost': 2},
         'd1': {'path': 'r1', 'cost': 3},
-        'd2': {'path': 'r4', 'cost': 1},
+        'd2': {'path': 'r4', 'cost': 2},
         'd3': {'path': 'r5', 'cost': 2}
     },
     'r4': {
         'r1': {'path': 'r3', 'cost': 2},
         'r2': {'path': 'r3', 'cost': 3},
         'r3': {'path': 'r3', 'cost': 1},
+        'r4': {'path': 'r4', 'cost': 0},
         'r5': {'path': 'r5', 'cost': 1},
         's': {'path': 'r3', 'cost': 3},
         'd1': {'path': 'r3', 'cost': 4},
@@ -56,6 +60,7 @@ routes = {
         'r2': {'path': 'r3', 'cost': 3},
         'r3': {'path': 'r3', 'cost': 1},
         'r4': {'path': 'r4', 'cost': 1},
+        'r5': {'path': 'r5', 'cost': 0},
         's': {'path': 'r3', 'cost': 3},
         'd1': {'path': 'r3', 'cost': 4},
         'd2': {'path': 'r4', 'cost': 2},
@@ -67,6 +72,7 @@ routes = {
         'r3': {'path': 'r1', 'cost': 2},
         'r4': {'path': 'r1', 'cost': 3},
         'r5': {'path': 'r1', 'cost': 3},
+        's': {'path': 's', 'cost': 0},
         'd1': {'path': 'r1', 'cost': 3},
         'd2': {'path': 'r1', 'cost': 4},
         'd3': {'path': 'r1', 'cost': 4}
@@ -78,6 +84,7 @@ routes = {
         'r4': {'path': 'r2', 'cost': 4},
         'r5': {'path': 'r2', 'cost': 4},
         's': {'path': 'r2', 'cost': 3},
+        'd1': {'path': 'd1', 'cost': 0},
         'd2': {'path': 'r2', 'cost': 5},
         'd3': {'path': 'r2', 'cost': 5}
     },
@@ -89,6 +96,7 @@ routes = {
         'r5': {'path': 'r4', 'cost': 2},
         's': {'path': 'r4', 'cost': 4},
         'd1': {'path': 'r4', 'cost': 5},
+        'd2': {'path': 'd2', 'cost': 0},
         'd3': {'path': 'r4', 'cost': 3}
     },
     'd3': {
@@ -99,7 +107,8 @@ routes = {
         'r5': {'path': 'r5', 'cost': 1},
         's': {'path': 'r5', 'cost': 4},
         'd1': {'path': 'r5', 'cost': 5},
-        'd2': {'path': 'r5', 'cost': 3}
+        'd2': {'path': 'r5', 'cost': 3},
+        'd3': {'path': 'd3', 'cost': 0}
     }
 }
 
@@ -134,4 +143,14 @@ nbrs = {
     'd1': ['r2'],
     'd2': ['r4'],
     'd3': ['r5']
+}
+
+packet_type = {
+    1: 'HELLO',
+    2: 'DATA_MULTICAST',
+    3: 'CENTROID_REQUEST',
+    4: 'CENTROID_REPLY',
+    5: 'DATA_UNICAST',
+    6: 'DATA_MULTICAST_ACK',
+    7: 'DATA_UNICAST_ACK'
 }

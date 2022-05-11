@@ -1,13 +1,8 @@
 import os
 
 from mininet.net import Mininet
-from mininet.log import lg, info
 from mininet.cli import CLI
-from mininet.node import Node
 from mininet.link import TCLink
-from mininet.link import TCIntf
-from mininet.log import setLogLevel, info
-
 
 class FPTopo(Mininet):
     def __init__(self):
@@ -82,7 +77,7 @@ class FPTopo(Mininet):
     def start_network(self):
         self.start()
         self.set_ips()
-        CLI(self).do_xterm()
+        CLI(self)
 
 
 def cleanup():
@@ -97,7 +92,6 @@ def cleanup():
 
 
 if __name__ == '__main__':
-    setLogLevel('info')
     topo = FPTopo()
     topo.start_network()
     cleanup()

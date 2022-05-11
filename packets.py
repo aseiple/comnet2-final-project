@@ -53,7 +53,13 @@ def read_data_multicast_header(pkt):
 
 
 def read_data_multicast_data(pkt):
-    data = pkt[9:]
+    seq, src, n, k, ln = struct.unpack('BBBBB', pkt[1:6])
+    if n == 1:
+        data = pkt[7:]
+    elif n == 2:
+        data = pkt[8:]
+    elif n == 3:
+        data = pkt[9:]
     return data.decode("utf-8")
 
 
@@ -64,7 +70,6 @@ def read_data_multicast_data(pkt):
 # N (1 BYTE)
 # DESTINATIONS (1 BYTE)
 def create_centroid_request(seq, src, n, dsts):
-    print(seq, src, n, dsts)
     if len(dsts) == 1:
         header = struct.pack('BBBBB', 3, seq, src, n, dsts[0])
         return header
